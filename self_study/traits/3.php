@@ -8,9 +8,9 @@ trait Validatable {
         }
         
         if (empty($email)) {
-            $errors[] = "Электронная почта обязательна";
+            print("Электронная почта обязательна");
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors[] = "У электронной почты некорректный формат";
+            print("У электронной почты некорректный формат");
         }
     }
 }
@@ -20,4 +20,12 @@ class RegistrationForm {
             $this ->validatable($name, $email);
         }
 }
+class LoginForm {
+    use Validatable;
+        public function validatable1($name, $email) {
+            $this ->validatable($name, $email);
+        }
+}
+$reg = new RegistrationForm();
+$reg -> validatable1('gdgd', 'dad@mail.ru');
 ?>
